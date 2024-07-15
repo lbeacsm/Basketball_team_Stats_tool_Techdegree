@@ -6,73 +6,77 @@ teams2 = copy.deepcopy(TEAMS)
 cleandata = []
 if __name__ == "__main__":
     def basketball_stats():
-          def clean_data():
-              for players in players2:
-                  clean = {}
-                  clean['name'] = players['name']
-                  clean ['guardians'] = players['guardians']  
-                  if players['experience'] == 'YES':
-                      clean['experience'] = True 
-                  else: 
-                      clean['experience'] = False 
-                      clean['height'] = int(players['height'].split(' ')[0])
-                      cleandata.append(clean)
-                      
-              return cleandata 
-          clean_data()
-          
-          num_players = len(cleandata) // len(teams2)
-          names =[players['name'] for players in players2]
-          Panthers = [] 
-          Bandits = []
-          Warriors = []
-          def balance_teams():
-              for team in [Panthers , Bandits, Warriors]: 
-                  while len(team) < num_players :
-                      team.append(names.pop())
+        def clean_data():
+            for players in players2:
+                clean = {}
+                clean['name'] = players['name']
+                clean ['guardians'] = players['guardians']  
+                if players['experience'] == 'YES':
+                    clean['experience'] = True 
+                else: 
+                    clean['experience'] = False
                     
-          balance_teams()           
+                clean['height'] = int(players['height'].split(' ')[0])
+                
+                cleandata.append(clean)
+            return cleandata 
+        clean_data()
+#this code has now cleaned each individual players information        
             
-          print ("BASKETBALL TEAM STATS")
-          print ("       --MENU--      ")
-          print("Here are your choices:  ")
-          print("A) Display team stats") 
-          print("B) quit")
-          answer = input("Choose your option:   ") 
-          while answer.lower() == 'a' :
-              print("A) PANTHERS")
-              print ("B)BANDITS")
-              print("C)WARRIORS")
-              option = input("Enter an option:  ") 
-              if option.lower()  == 'a':
-                  print ("PANTHER STATS")
-                  print("--------------------")
-                  print(" Total number of players is : {} " .format(num_players))
-                  print("Players on team: {}" .format(','.join(Panthers)))
-
-              elif option.lower() == 'b': 
-                  print ("BANDITS STATS")
-                  print("--------------------")
-                  print(" Total number of players: {} " .format(num_players))
-                  print("Players on team: {}" .format(','.join(Bandits)))
-
-              elif option.lower() == 'c':
-                  print ("WARRIOR STATS")
-                  print("--------------------")
-                  print(" Total number of players: {} " .format(num_players))
-                  print("Players on team: {}" .format(','.join(Warriors)))
-              else: 
-                  print("Please write one of the options (A,B OR C)")
-              ask = input("Press Enter to continue...")
-              if ask.lower() != 'enter':
-                  print("end")
-                  break
-              else:
-                  continue 
-          print("Bye...")
+          
+        num_players = len(cleandata) /  len(teams2)
+        names =[players['name'] for players in cleandata]
+        Panthers = [] 
+        Bandits = []
+        Warriors = []
+        def balance_teams():
+            for team in [Panthers , Bandits, Warriors]: 
+                while len(team) < num_players :
+                    team.append(names.pop())
+                    
+        balance_teams()           
+        #This function divided the players equally througout the teams
+            
+        print ("BASKETBALL TEAM STATS")
+        print ("       --MENU--      ")
+        print("Here are your choices:  ")
+        print("A) Display team stats") 
+        print("B) quit")
+        answer = input("Choose your option:   ") 
+        while answer.lower() == 'a' :
+            print("A) PANTHERS")
+            print ("B)BANDITS")
+            print("C)WARRIORS")
+            option = input("Enter an option:  ") 
+            if option.lower()  == 'a':
+                print ("PANTHER STATS")
+                print("--------------------")
+                print(" Total number of players is : {} " .format(round(num_players)))
+                print("Players on team: {}" .format(','.join(Panthers)))
+            elif option.lower() == 'b': 
+                print ("BANDITS STATS")
+                print("--------------------")
+                print(" Total number of players: {} " .format(num_players))
+                print("Players on team: {}" .format(','.join(Bandits)))
+            elif option.lower() == 'c':
+                print ("WARRIOR STATS")
+                print("--------------------")
+                print(" Total number of players: {} " .format(num_players))
+                print("Players on team: {}" .format(','.join(Warriors)))
+            else: 
+                print("Please write one of the options (A,B OR C)")
+            ask = input("type Enter to continue...")
+            if ask.lower() != 'enter':
+                print("end")
+                break
+            else:
+                continue 
+                
+        print("Bye...")
       
       
     basketball_stats()  
 
     
-  
+  #This proyect challenged my a lot, surprisingly the hardest part was making the name list. 
+
